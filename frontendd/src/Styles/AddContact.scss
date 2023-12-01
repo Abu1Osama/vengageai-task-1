@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   width: 100%;
-  backdrop-filter: blur(45px); /* Add the blur effect to the overlay */
+  backdrop-filter: blur(45px); 
   box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
   height: 100vh;
   #AddContact-main.AddContact-main {
@@ -47,7 +47,9 @@
     input {
       padding: 10px;
       width: 100%;
-      border-radius: 12px;
+      border-radius: 8px;
+      background: #3a3a3a;
+    border: 1px solid #5e5e5e;
     }
     button {
       padding: 10px;

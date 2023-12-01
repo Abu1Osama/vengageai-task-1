@@ -3,6 +3,7 @@ import "../Styles/ContactDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteContact, fetchContactById } from "../Redux/action";
+import toast from "react-hot-toast";
 
 function ContactDetails() {
   const { id } = useParams();
@@ -30,10 +31,13 @@ function ContactDetails() {
     }
     navigate("/");
   };
+  const moveback=()=>{
+    navigate("/")
+  }
   return (
     <div className="ContactDetails" id="ContactDetails">
       <div className="back-btn">
-        <i class="fa-solid fa-arrow-left"></i>
+        <i onClick={moveback} class="fa-solid fa-arrow-left"></i>
         <i onClick={deletecontacthandle} class="fa-solid fa-trash"></i>
       </div>
       <div className="ContactDetails-logo">
@@ -48,7 +52,7 @@ function ContactDetails() {
         </Link>
       </div>
       <div className="mobile">
-        <span> {contact.phoneNumber} </span>
+        <span> +91{contact.phoneNumber} </span>
         <i className="fa-solid fa-phone"></i>
       </div>
       <div className="email-address">
@@ -58,6 +62,20 @@ function ContactDetails() {
       <div className="address">
         <h3>Address:-</h3>
         <p>{contact.address}</p>
+      </div>
+      <div className="fav">
+      <i onClick={()=> toast.success("Contact Added to Favourites !", {
+        style: {
+          borderRadius: "50px",
+          background: "#000428",
+          color: "#ffffff",
+          padding: "1rem 1.5rem",
+          fontWeight: "600",
+        },
+      })} class="fa-solid fa-heart"></i>
+      <Link to={`/contact-edit/${id}`}>
+          <i class="fa-solid fa-pen-to-square"></i>
+        </Link>
       </div>
     </div>
   );

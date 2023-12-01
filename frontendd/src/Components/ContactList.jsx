@@ -34,7 +34,7 @@ function ContactList() {
           </div>
           <div className="content">
             <h3>{item.firstName + " " + item.lastName}</h3>
-            <strong>{item.phoneNumber}</strong>
+            <strong>+91{item.phoneNumber}</strong>
           </div>
           <div className="forward-ico">
             <i class="fa-solid fa-angle-right"></i>
