@@ -1,0 +1,89 @@
+#ContactDetails.ContactDetails {
+  width: 40%;
+  border: 1px solid rgb(202, 198, 198);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+  margin: auto;
+  border-radius: 12px;
+  padding: 20px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .back-btn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+        i {
+            padding: 10px;
+            background: green;
+            border-radius: 50px;
+            cursor: pointer;
+          }
+    
+  }
+  .ContactDetails-logo {
+    i {
+      padding: 15px;
+      border-radius: 50%;
+      border: 1px solid rgb(214, 215, 214);
+      color: gray;
+      font-size: 50px;
+    }
+  }
+  .contact-name {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    i {
+      padding: 10px;
+      background: green;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  }
+  .mobile,
+  .email-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    span {
+      font-weight: 500;
+    }
+    i {
+      padding: 10px;
+      background: green;
+      border-radius: 50px;
+    }
+  }
+  .address {
+    // width: 50%;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    padding: 10px;
+    p{
+        width: 50%;
+    }
+  }
+}
+
+
+
+@media (max-width: 768px) {
+    #ContactDetails.ContactDetails {
+        width: 100%;
+        padding: 20px;
+    }
+
+}
