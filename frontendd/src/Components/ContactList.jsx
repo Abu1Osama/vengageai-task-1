@@ -1,18 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/ContactList.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../Redux/action";
+import Loader from "../Components/Loader";
 
 function ContactList() {
   const contactsss = useSelector((store) => store.contactReducer.contacts);
+  const [loading, setLoading] = useState(true);
   console.log(contactsss);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchContacts());
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, [dispatch]);
+  if (loading) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
   return (
     <div id="ContactList" className="ContactList">
       <div className="search-container">
@@ -23,6 +39,7 @@ function ContactList() {
           //   onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+
       {contactsss.map((item) => (
         <Link
           to={`/contact-details/${item._id}`}
