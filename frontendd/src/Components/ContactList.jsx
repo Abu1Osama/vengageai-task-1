@@ -8,8 +8,17 @@ import Loader from "../Components/Loader";
 function ContactList() {
   const contactsss = useSelector((store) => store.contactReducer.contacts);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
   console.log(contactsss);
   const dispatch = useDispatch();
+
+
+  const filteredContacts = contactsss.filter(
+    (contact) =>
+      contact.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      contact.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      contact.phoneNumber.includes(searchTerm)
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,12 +44,12 @@ function ContactList() {
         <input
           type="text"
           placeholder="Search contacts..."
-          //   value={searchTerm}
-          //   onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      {contactsss.map((item) => (
+      {filteredContacts.map((item) => (
         <Link
           to={`/contact-details/${item._id}`}
           key={item.id}
